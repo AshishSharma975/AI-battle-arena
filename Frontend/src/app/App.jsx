@@ -105,9 +105,11 @@ const App = () => {
     setHistory(prev => [...prev, pendingMessage]);
 
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3000";
-      const response = await axios.post(`${apiUrl}/invoke`, 
-        { problem: promptText });
+     const apiUrl = "https://ai-battle-arena-8zno.onrender.com";
+
+const response = await axios.post(`${apiUrl}/invoke`, {
+  problem: promptText
+});
 
       const data = response.data.data;
 

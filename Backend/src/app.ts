@@ -3,7 +3,7 @@ import runGraph from "./ai/graph.ai.js";
 import { success } from "zod";
 import cors from "cors";
 import path from "path";
-
+import { fileURLToPath } from "url";
 const app = express();
 
 app.use(express.json());
@@ -33,7 +33,10 @@ app.post("/invoke", async (req, res) => {
 
 
 // ES module me __dirname fix
-const __dirname = new URL('.', import.meta.url).pathname;
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // static files serve
 app.use(express.static(path.join(__dirname, "../Frontend/dist")));

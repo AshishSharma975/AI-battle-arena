@@ -10,11 +10,11 @@ app.use(express.json());
 
 app.use(cors({
     origin: "*",
-    methods: ["GET","POST"],
+    methods: ["GET", "POST"],
     credentials: true
 }));
 
-// ===== API =====
+// ================= API =================
 
 app.get("/use-me", async (req, res) => {
     try {
@@ -42,18 +42,17 @@ app.post("/invoke", async (req, res) => {
     }
 });
 
-// ===== FRONTEND =====
 
-// dirname fix
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// static serve
+// static files
 app.use(express.static(path.join(__dirname, "../Frontend/dist")));
 
-// react routing
-app.get("/*", (req, res) => {
+app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "../Frontend/dist/index.html"));
 });
 
 export default app;
+
+

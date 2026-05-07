@@ -31,6 +31,8 @@ const solutionNode: GraphNode<typeof state> = async (state) => {
   };
 };
 
+
+
 const judgeNode: GraphNode<typeof state> = async (state) => {
   const { problem, solution_1, solution_2 } = state;
 
@@ -54,6 +56,8 @@ const judgeNode: GraphNode<typeof state> = async (state) => {
         Please evaluate the solutions and provide a score for each (0-10) and a winner.
         `,
   });
+
+  
 
 const judgeResponse = await judge.invoke({
     messages:[
